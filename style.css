@@ -12,6 +12,19 @@ body {
     font-style: normal;
 }
 
+li {
+    list-style: none;
+    color: hsl(235, 19%, 35%);
+}
+
+button {
+    border-radius: 100%;
+    background-color: transparent;
+    height: 20px;
+    width: 20px;
+    border: 1px solid hsl(233, 11%, 84%);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -36,10 +49,32 @@ body {
     align-items: center;
 }
 
+.item:nth-child(2) {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    color: hsl(236, 9%, 61%);
+    display: flex;
+    gap: 1rem;
+}
+
 input {
+    padding: 0;
+    margin: 0;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    height: 22px;
+    width: 100%;
     outline: none;
     border: none;
-    width:max-content;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
 
 input::placeholder {
@@ -47,13 +82,8 @@ input::placeholder {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-}
-
-.item:nth-child(2) {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.3rem;
-    color: hsl(236, 9%, 61%);
+    margin: 0;
+    height: 22px;
 }
 
 .item:nth-child(3) {
@@ -63,9 +93,22 @@ input::placeholder {
     flex-direction: column;
 }
 
-.list-item:nth-child(1) li {
+.list-item-div {
     padding: 1rem;
     border-bottom: 0.05rem solid hsl(236, 33%, 92%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-item-div div {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-item-div img {
+    opacity: 0;
 }
 
 
@@ -81,7 +124,111 @@ input::placeholder {
     justify-content: space-between;
 }
 
+.status p:first-child {
+    color: hsl(220, 98%, 61%);
+}
+
+
+.list-item:nth-child(2) > div:last-child {
+    justify-self: end;
+}
+
 .item:last-child {
     color: hsl(236, 9%, 61%);
     text-align: center;
+}
+
+
+/* ACTIVE STATES */
+
+.item:nth-child(1) img:hover{
+    cursor: pointer;
+}
+
+.list-item-div img:hover {
+    opacity: 1;   
+}
+
+.status > *{
+    cursor: pointer;
+}
+
+.list-item:nth-child(2) > div:last-child {
+    cursor: pointer;
+}
+
+
+
+
+
+/* RESPONSIVE DESIGN  */
+
+@media (max-width:530px) {
+
+    body {
+        height: fit-content;
+    }
+
+    .container {
+        min-width: 100%;
+        margin: 0 1rem;
+    }
+
+    .item:nth-child(3) {
+        background-color: transparent;
+        border-radius: 0.3rem 0.3rem 0 0;
+    }
+    
+    .list-item:nth-child(1) {
+        border-radius: 0.3rem 0.3rem 0 0;
+    }
+
+    .list-item-div {
+        background-color: white;
+    }
+
+    .list-item-div:nth-child(1) {
+        border-radius: 0.3rem 0.3rem 0 0;
+    }
+
+
+    .list-item:nth-child(2) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        padding: 0;
+        background-color: transparent;     
+    }
+
+    .list-item:nth-child(2) > div:first-child {
+        background-color: white;
+        padding-left: 1rem;
+        border-radius: 0 0 0 0.3rem;
+    }
+
+    .list-item:nth-child(2) > div:last-child {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        justify-self: auto;
+        background-color: white;
+        text-align: right;
+        padding-right: 1rem;
+        border-radius: 0 0 0.3rem 0;
+    }
+
+    .status {
+        grid-column: span 3;
+        justify-content: center;
+        gap: 1rem;
+        background-color: white;
+        margin-top: 2rem;
+        border-radius: 0.3rem;
+    }
+}
+
+
+@media (max-width:388px) {
+    body {
+        background-image: url(./images/bg-mobile-light.jpg);
+        background-repeat: no-repeat;
+    }
 }
